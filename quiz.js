@@ -57,6 +57,7 @@ function renderQuestions() {
 
 // Evaluar respuestas y mostrar retroalimentación
 function checkAnswers() {
+  let score = 0;
   questions.forEach((q, index) => {
     const feedbackDiv = document.getElementById("feedback-" + index);
     const selected = document.querySelector(`input[name="question${index}"]:checked`);
@@ -64,6 +65,7 @@ function checkAnswers() {
       if (selected.value === q.correctAnswer) {
         feedbackDiv.innerText = "¡Correcto! " + q.feedback;
         feedbackDiv.style.backgroundColor = "var(--feedback-correct)";
+        score++;
       } else {
         feedbackDiv.innerText = "Incorrecto. " + q.feedback;
         feedbackDiv.style.backgroundColor = "var(--feedback-incorrect)";
@@ -74,6 +76,29 @@ function checkAnswers() {
     }
     feedbackDiv.style.display = "block";
   });
+
+  const name = document.getElementById("name").value;
+  const surname = document.getElementById("surname").value;
+  saveScore(name, surname, score, questions.length);
+  alert(`Tu puntaje es: ${score} de ${questions.length}`);
+}
+
+// Guardar puntaje en Google Sheets
+function saveScore(name, surname, score, total) {
+  if (!name || !surname) {
+    alert("Por favor, ingrese su nombre y apellido antes de enviar las respuestas.");
+    return;
+  }
+
+  let data = { name, surname, score, total };
+
+  fetch("https://script.google.com/macros/s/AKfycbwMbTsXHXjJ6cSUr7pLEwO8qM_LyIOXcZ9JVjRC5IGmiauDzl33zBP_mPb8eMQV_tjs/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  }).then(response => response.text())
+    .then(result => console.log("Enviado a Google Sheets:", result))
+    .catch(error => console.error("Error:", error));
 }
 
 function printEvidence() {
@@ -99,7 +124,6 @@ function printEvidence() {
       let answerLines = doc.splitTextToSize("Respuesta seleccionada: " + answer, 180);
       let feedbackLines = doc.splitTextToSize("Retroalimentación: " + feedbackText, 180);
   
-      // Verificar si hay espacio suficiente en la página
       if (yPosition + questionLines.length * 7 + answerLines.length * 7 + feedbackLines.length * 7 > 270) {
         doc.addPage();
         yPosition = 10;
