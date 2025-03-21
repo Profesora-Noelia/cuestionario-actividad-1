@@ -76,41 +76,46 @@ function checkAnswers() {
   });
 }
 
-// Función para generar PDF con la evidencia
 function printEvidence() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  let yPosition = 10;
-
-  const name = document.getElementById("name").value;
-  const surname = document.getElementById("surname").value;
-  doc.setFontSize(14);
-  doc.text(`Nombre: ${name} ${surname}`, 10, yPosition);
-  yPosition += 10;
-  doc.text("Resultados del Quiz:", 10, yPosition);
-  yPosition += 10;
-  
-  questions.forEach((q, index) => {
-    const selected = document.querySelector(`input[name="question${index}"]:checked`);
-    let answer = selected ? selected.value : "Sin respuesta";
-    const feedbackDiv = document.getElementById("feedback-" + index);
-    let feedbackText = feedbackDiv && feedbackDiv.innerText ? feedbackDiv.innerText : "";
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    let yPosition = 10;
     
-    // Si el espacio se agota, agrega una nueva página.
-    if (yPosition > 270) {
-      doc.addPage();
-      yPosition = 10;
-    }
-    doc.setFontSize(12);
-    doc.text((index + 1) + ". " + q.question, 10, yPosition);
-    yPosition += 7;
-    doc.text("Respuesta seleccionada: " + answer, 10, yPosition);
-    yPosition += 7;
-    doc.text("Retroalimentación: " + feedbackText, 10, yPosition);
+    const name = document.getElementById("name").value;
+    const surname = document.getElementById("surname").value;
+    doc.setFontSize(14);
+    doc.text(`Nombre: ${name} ${surname}`, 10, yPosition);
     yPosition += 10;
-  });
+    doc.text("Resultados del Quiz:", 10, yPosition);
+    yPosition += 10;
   
-  doc.save("evidencia_quiz.pdf");
-}
+    questions.forEach((q, index) => {
+      const selected = document.querySelector(`input[name="question${index}"]:checked`);
+      let answer = selected ? selected.value : "Sin respuesta";
+      const feedbackDiv = document.getElementById("feedback-" + index);
+      let feedbackText = feedbackDiv && feedbackDiv.innerText ? feedbackDiv.innerText : "";
+  
+      let questionLines = doc.splitTextToSize((index + 1) + ". " + q.question, 180);
+      let answerLines = doc.splitTextToSize("Respuesta seleccionada: " + answer, 180);
+      let feedbackLines = doc.splitTextToSize("Retroalimentación: " + feedbackText, 180);
+  
+      // Verificar si hay espacio suficiente en la página
+      if (yPosition + questionLines.length * 7 + answerLines.length * 7 + feedbackLines.length * 7 > 270) {
+        doc.addPage();
+        yPosition = 10;
+      }
+  
+      doc.setFontSize(12);
+      doc.text(questionLines, 10, yPosition);
+      yPosition += questionLines.length * 7;
+      doc.text(answerLines, 10, yPosition);
+      yPosition += answerLines.length * 7;
+      doc.text(feedbackLines, 10, yPosition);
+      yPosition += feedbackLines.length * 7 + 5;
+    });
+  
+    doc.save("evidencia_quiz.pdf");
+  }
+  
 
 loadQuestions();
