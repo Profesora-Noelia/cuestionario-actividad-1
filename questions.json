@@ -1,0 +1,151 @@
+{
+    "questions": [
+      {
+        "question": "¿Cómo se define técnicamente un videojuego según el video?",
+        "options": [
+          "Una película interactiva",
+          "Una aplicación interactiva cuyo propósito es entretener",
+          "Un software de diseño gráfico",
+          "Un programa de edición de video"
+        ],
+        "correctAnswer": "Una aplicación interactiva cuyo propósito es entretener",
+        "feedback": "La respuesta B es la correcta, ya que el video define al videojuego como una aplicación interactiva con el objetivo principal de entretener."
+      },
+      {
+        "question": "¿Qué elemento distingue a los videojuegos de otras formas de entretenimiento como las películas?",
+        "options": [
+          "La calidad gráfica",
+          "La interactividad",
+          "La duración",
+          "La banda sonora"
+        ],
+        "correctAnswer": "La interactividad",
+        "feedback": "La interactividad permite que el jugador participe activamente, a diferencia de las películas donde el espectador solo observa."
+      },
+      {
+        "question": "¿Cuál de los siguientes dispositivos NO se utiliza habitualmente para jugar videojuegos?",
+        "options": [
+          "Teclado",
+          "Mouse",
+          "Teléfono celular",
+          "Impresora"
+        ],
+        "correctAnswer": "Impresora",
+        "feedback": "Los dispositivos comunes para jugar son teclado, mouse y celular; una impresora no se utiliza para esta finalidad."
+      },
+      {
+        "question": "¿Qué función cumplen las reglas dentro de un videojuego?",
+        "options": [
+          "Hacer el juego caótico",
+          "Permitir que el jugador actúe sin restricciones",
+          "Establecer límites y desafíos para el jugador",
+          "Controlar la calidad de imagen"
+        ],
+        "correctAnswer": "Establecer límites y desafíos para el jugador",
+        "feedback": "Las reglas establecen límites y definen desafíos que hacen el juego justo y entretenido."
+      },
+      {
+        "question": "¿Qué característica es fundamental en el estilo 'arte retro' en videojuegos?",
+        "options": [
+          "Uso de gráficos 3D hiperrealistas",
+          "Uso de elementos de arte 2D y técnicas basadas en sprites",
+          "Colores brillantes sin textura",
+          "Modelos digitales fotográficos"
+        ],
+        "correctAnswer": "Uso de elementos de arte 2D y técnicas basadas en sprites",
+        "feedback": "El arte retro se caracteriza por el uso de gráficos 2D y sprites, rememorando la estética de los videojuegos antiguos."
+      },
+      {
+        "question": "En el estilo 'arte cartoon', ¿cuál es la principal influencia estética?",
+        "options": [
+          "El realismo fotográfico",
+          "La abstracción y el dibujo animado",
+          "El minimalismo monocromático",
+          "La animación stop-motion"
+        ],
+        "correctAnswer": "La abstracción y el dibujo animado",
+        "feedback": "El arte cartoon se inspira en el dibujo animado y la abstracción, lo que le confiere un aspecto caricaturesco."
+      },
+      {
+        "question": "¿Cuál de las siguientes dinámicas se menciona en el video como ejemplo?",
+        "options": [
+          "Supervivencia",
+          "Conducción profesional",
+          "Administración de recursos financieros",
+          "Realidad virtual"
+        ],
+        "correctAnswer": "Supervivencia",
+        "feedback": "La dinámica de supervivencia es un ejemplo mencionado en el video, donde el jugador debe evitar morir el mayor tiempo posible."
+      },
+      {
+        "question": "¿Qué significa que un videojuego sea interactivo?",
+        "options": [
+          "Que el usuario solo observa sin participar",
+          "Que el usuario puede influir activamente en el juego mediante acciones",
+          "Que el juego tiene gráficos llamativos",
+          "Que el juego utiliza efectos especiales avanzados"
+        ],
+        "correctAnswer": "Que el usuario puede influir activamente en el juego mediante acciones",
+        "feedback": "La característica interactiva implica que el jugador participa activamente, influyendo en el desarrollo del juego."
+      },
+      {
+        "question": "¿Cuál de las siguientes es una mecánica común en los videojuegos?",
+        "options": [
+          "Desplazar al personaje saltando",
+          "Seleccionar imágenes de fondo",
+          "Modificar el tamaño del monitor",
+          "Elegir la velocidad de conexión a Internet"
+        ],
+        "correctAnswer": "Desplazar al personaje saltando",
+        "feedback": "Saltar o moverse es una mecánica común que involucra la acción del personaje, coordinando animación, física y sonido."
+      },
+      {
+        "question": "¿Por qué la programación es fundamental en los videojuegos?",
+        "options": [
+          "Porque permite generar imágenes fijas en pantalla",
+          "Porque permite la gestión en tiempo real de acciones y respuestas a la interacción del jugador",
+          "Porque mejora únicamente la calidad de sonido",
+          "Porque solo se utiliza para el desarrollo de gráficos"
+        ],
+        "correctAnswer": "Porque permite la gestión en tiempo real de acciones y respuestas a la interacción del jugador",
+        "feedback": "La programación es esencial para coordinar las respuestas del juego en tiempo real a las acciones del usuario, integrando gráficos, sonido y física."
+      },
+      {
+        "question": "Objetivo del Juego\nEn la plantilla de diseño se debe describir el “Objetivo del Juego”, que consiste en la meta principal que el jugador debe alcanzar (por ejemplo, “rescatar a la princesa superando desafíos específicos”) y los retos que le permitirán progresar en la historia.\nEl desarrollador Josecito completo en la plantilla que el objetivo del juego como:\n“Ofrece entretenimiento sin una meta específica, ya que el simple hecho de jugar es suficiente.”\n¿crees que completo de forma incorrecta o correcta?",
+        "options": [
+          "Correcto",
+          "Incorrecto"
+        ],
+        "correctAnswer": "Incorrecto",
+        "feedback": "Josecito se equivoco porque el objetivo del juego debe incluir una meta clara y específica que oriente la experiencia del jugador, no solo brindar entretenimiento sin dirección definida."
+      },
+      {
+        "question": "Interactividad\nEl campo “Interactividad” debe explicar cómo el usuario influye en el desarrollo del juego a través de acciones que modifican el entorno, la historia o el comportamiento de los personajes. Es decir, se valora la participación activa del jugador.\nEl desarrollador Josecito definió la interactividad como:\n“La posibilidad de ver imágenes en movimiento sin que el usuario tenga que hacer nada.”\n¿crees que completo de forma incorrecta o correcta?",
+        "options": [
+          "Correcto",
+          "Incorrecto"
+        ],
+        "correctAnswer": "Incorrecto",
+        "feedback": "Josecito se equivoco porque la interactividad implica que el jugador participa activamente; sus acciones deben generar respuestas o cambios en el juego, no solo ser un espectador de imágenes en movimiento."
+      },
+      {
+        "question": "Reglas del Juego\nEl campo “Reglas del Juego” debe incluir las normativas y limitaciones que estructuran el funcionamiento del juego, definiendo qué acciones son permitidas y cuáles no, para garantizar un desafío coherente y justo para el jugador.\nEl desarrollador Josecito definió las reglas como:\n“Directrices opcionales que el jugador puede ignorar si lo desea.”\n¿crees que completo de forma incorrecta o correcta?",
+        "options": [
+          "Correcto",
+          "Incorrecto"
+        ],
+        "correctAnswer": "Incorrecto",
+        "feedback": "Josecito se equivoco, ya que las reglas son fundamentales y obligatorias. Establecen el marco de acción y las limitaciones del juego, por lo que no pueden ser opcionales ni ignoradas sin afectar la coherencia del juego."
+      },
+      {
+        "question": "Elementos Audiovisuales\nEn la plantilla, el apartado “Elementos Audiovisuales” debe detallar los componentes gráficos y sonoros que se utilizarán en el juego, explicando cómo contribuyen a crear la atmósfera y a sumergir al jugador en la experiencia del juego.\nEl desarrollador Josecito definió los elementos audiovisuales como:\n“Solo efectos de sonido, sin importancia a los gráficos o imágenes.”\n¿crees que completo de forma incorrecta o correcta?",
+        "options": [
+          "Correcto",
+          "Incorrecto"
+        ],
+        "correctAnswer": "Incorrecto",
+        "feedback": "Josecito se equivoco porque los elementos audiovisuales comprenden tanto el aspecto visual (gráficos, animaciones) como el auditivo (música, efectos de sonido). Ambos son esenciales para lograr una experiencia inmersiva y coherente."
+      }
+    ]
+  }
+  

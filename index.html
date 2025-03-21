@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudián y respondé</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <header>
+      
+    </header>
+    
+    <!-- Información del usuario -->
+    <section id="user-info">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" placeholder="Ingrese su nombre" />
+      <label for="surname">Apellido:</label>
+      <input type="text" id="surname" placeholder="Ingrese su apellido" />
+    </section>
+    
+    <!-- Contenedor de preguntas -->
+    <form id="quiz-form">
+      <div id="quiz-questions">
+        <!-- Las preguntas se cargarán dinámicamente -->
+      </div>
+      <div class="buttons-container">
+        <button type="button" id="submit-btn" onclick="checkAnswers()">Enviar respuestas</button>
+        <button type="button" id="print-btn" onclick="printEvidence()">Imprimir Evidencia</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- jsPDF desde CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>

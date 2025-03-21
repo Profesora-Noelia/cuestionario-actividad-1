@@ -1,0 +1,209 @@
+/* Variables de color y tipografía */
+:root {
+    --primary-color: #5c2d91;   /* Color primario - morado */
+    --secondary-color: #ff5c8d; /* Color secundario - rosa */
+    --accent-color: #f9c22e;    /* Color de acento - amarillo */
+    --bg-color: #f7f7f7;        /* Fondo general */
+    --header-bg: #ff5c8d;       /* Fondo encabezado */
+    --text-color: #333;         /* Color de texto */
+    --btn-hover: #ff4385;       /* Hover de botones */
+    --input-border: #bdc3c7;
+    --feedback-correct: #27ae5f6b;
+    --feedback-incorrect: #c03a2b6a;
+    --font-main: 'Open Sans', sans-serif; /* Cambié a Open Sans */
+}
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo y tipografía general */
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 10px;
+}
+
+/* Contenedor principal */
+.quiz-container {
+    width: 95%; /* Ocupa el 95% de la pantalla */
+    max-width: 100%; /* Se ajusta al ancho disponible */
+    margin: 10px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Encabezado */
+header {
+    background: var(--header-bg);
+    padding: 30px 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Título del encabezado */
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Información del usuario */
+#user-info {
+    background: var(--bg-color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#user-info label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+#user-info input {
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+/* Contenedor de preguntas */
+#quiz-questions {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Cada bloque de pregunta */
+.question-container {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    line-height: 1.6;
+    display: block;
+}
+
+.question-text {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--primary-color);
+}
+
+/* Opciones */
+.options-container {
+    display: flex; /* Cambié de block a flex */
+    flex-direction: column; /* Asegura que las opciones se apilen verticalmente */
+    gap: 10px; /* Agrega espacio entre las opciones */
+    margin-top: 10px;
+}
+
+.option {
+    padding: 15px;
+    background: var(--bg-color);
+    border-radius: 10px; /* Eliminar el borde redondeado en todo el contenedor */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+    text-align: left; /* Alineamos el texto a la izquierda */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%; /* Las opciones ocupan todo el ancho disponible */
+    margin-bottom: 10px; /* Agregué un pequeño margen para separar las opciones */
+}
+
+.option:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Estilos de botones */
+button {
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--btn-hover);
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    /* Contenedor principal */
+    .quiz-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    /* Encabezado */
+    header h1 {
+        font-size: 1.5rem; /* Ajuste de tamaño de texto */
+    }
+
+    /* Información del usuario */
+    #user-info {
+        flex-direction: column;
+    }
+
+    /* Preguntas */
+    .question-container {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .question-text {
+        font-size: 16px;
+    }
+
+    .options-container {
+        display: flex;
+        flex-direction: column; /* Apila las opciones verticalmente */
+        gap: 15px; /* Espacio entre las opciones */
+    }
+    
+    .option {
+        font-size: 14px;
+        margin-left: 20px;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    /* Botones */
+    button {
+        font-size: 1rem;
+        padding: 8px 14px;
+    }
+}
