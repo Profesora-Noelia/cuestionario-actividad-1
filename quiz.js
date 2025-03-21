@@ -58,6 +58,8 @@ function renderQuestions() {
 // Evaluar respuestas y mostrar retroalimentación
 function checkAnswers() {
   let score = 0;
+  const totalQuestions = questions.length;
+
   questions.forEach((q, index) => {
     const feedbackDiv = document.getElementById("feedback-" + index);
     const selected = document.querySelector(`input[name="question${index}"]:checked`);
@@ -77,10 +79,11 @@ function checkAnswers() {
     feedbackDiv.style.display = "block";
   });
 
-  // Mostrar puntaje y retroalimentación en la página
-  const percentage = (score / questions.length) * 100;
-  let feedbackMessage = `Tu puntaje es: ${score} de ${questions.length}\n`;
+  // Calcular porcentaje
+  const percentage = (score / totalQuestions) * 100;
+  let feedbackMessage = `Tu puntaje es: ${score} de ${totalQuestions}\n`;
 
+  // Mensaje de retroalimentación dependiendo del porcentaje
   if (percentage < 80) {
     feedbackMessage += "Desaprobaste la actividad. Intenta nuevamente.";
   } else {
@@ -133,4 +136,5 @@ function printEvidence() {
   doc.save("evidencia_quiz.pdf");
 }
 
+// Llamar a la función para cargar las preguntas
 loadQuestions();
