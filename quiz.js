@@ -77,7 +77,7 @@ function checkAnswers() {
     feedbackDiv.style.display = "block";
   });
 
-  // Mostrar puntaje en una ventana emergente
+  // Mostrar puntaje y retroalimentación en la página
   const percentage = (score / questions.length) * 100;
   let feedbackMessage = `Tu puntaje es: ${score} de ${questions.length}\n`;
 
@@ -87,7 +87,9 @@ function checkAnswers() {
     feedbackMessage += "¡Aprobaste la actividad! ¡Felicidades!";
   }
 
-  alert(feedbackMessage);
+  // Mostrar mensaje en la página
+  const feedbackContainer = document.getElementById("feedback-container");
+  feedbackContainer.innerText = feedbackMessage;
 }
 
 // Función para imprimir la evidencia del quiz
