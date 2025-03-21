@@ -77,69 +77,58 @@ function checkAnswers() {
     feedbackDiv.style.display = "block";
   });
 
+  // Mostrar puntaje en una ventana emergente
+  const percentage = (score / questions.length) * 100;
+  let feedbackMessage = `Tu puntaje es: ${score} de ${questions.length}\n`;
+
+  if (percentage < 80) {
+    feedbackMessage += "Desaprobaste la actividad. Intenta nuevamente.";
+  } else {
+    feedbackMessage += "¡Aprobaste la actividad! ¡Felicidades!";
+  }
+
+  alert(feedbackMessage);
+}
+
+// Función para imprimir la evidencia del quiz
+function printEvidence() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  let yPosition = 10;
+
   const name = document.getElementById("name").value;
   const surname = document.getElementById("surname").value;
-  saveScore(name, surname, score, questions.length);
-  alert(`Tu puntaje es: ${score} de ${questions.length}`);
+  doc.setFontSize(14);
+  doc.text(`Nombre: ${name} ${surname}`, 10, yPosition);
+  yPosition += 10;
+  doc.text("Resultados del Quiz:", 10, yPosition);
+  yPosition += 10;
+
+  questions.forEach((q, index) => {
+    const selected = document.querySelector(`input[name="question${index}"]:checked`);
+    let answer = selected ? selected.value : "Sin respuesta";
+    const feedbackDiv = document.getElementById("feedback-" + index);
+    let feedbackText = feedbackDiv && feedbackDiv.innerText ? feedbackDiv.innerText : "";
+
+    let questionLines = doc.splitTextToSize((index + 1) + ". " + q.question, 180);
+    let answerLines = doc.splitTextToSize("Respuesta seleccionada: " + answer, 180);
+    let feedbackLines = doc.splitTextToSize("Retroalimentación: " + feedbackText, 180);
+
+    if (yPosition + questionLines.length * 7 + answerLines.length * 7 + feedbackLines.length * 7 > 270) {
+      doc.addPage();
+      yPosition = 10;
+    }
+
+    doc.setFontSize(12);
+    doc.text(questionLines, 10, yPosition);
+    yPosition += questionLines.length * 7;
+    doc.text(answerLines, 10, yPosition);
+    yPosition += answerLines.length * 7;
+    doc.text(feedbackLines, 10, yPosition);
+    yPosition += feedbackLines.length * 7 + 5;
+  });
+
+  doc.save("evidencia_quiz.pdf");
 }
-
-// Guardar puntaje en Google Sheets
-function saveScore(name, surname, score, total) {
-  if (!name || !surname) {
-    alert("Por favor, ingrese su nombre y apellido antes de enviar las respuestas.");
-    return;
-  }
-
-  let data = { name, surname, score, total };
-
-  fetch("https://script.google.com/macros/s/AKfycbwMbTsXHXjJ6cSUr7pLEwO8qM_LyIOXcZ9JVjRC5IGmiauDzl33zBP_mPb8eMQV_tjs/exec", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  }).then(response => response.text())
-    .then(result => console.log("Enviado a Google Sheets:", result))
-    .catch(error => console.error("Error:", error));
-}
-
-function printEvidence() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    let yPosition = 10;
-    
-    const name = document.getElementById("name").value;
-    const surname = document.getElementById("surname").value;
-    doc.setFontSize(14);
-    doc.text(`Nombre: ${name} ${surname}`, 10, yPosition);
-    yPosition += 10;
-    doc.text("Resultados del Quiz:", 10, yPosition);
-    yPosition += 10;
-  
-    questions.forEach((q, index) => {
-      const selected = document.querySelector(`input[name="question${index}"]:checked`);
-      let answer = selected ? selected.value : "Sin respuesta";
-      const feedbackDiv = document.getElementById("feedback-" + index);
-      let feedbackText = feedbackDiv && feedbackDiv.innerText ? feedbackDiv.innerText : "";
-  
-      let questionLines = doc.splitTextToSize((index + 1) + ". " + q.question, 180);
-      let answerLines = doc.splitTextToSize("Respuesta seleccionada: " + answer, 180);
-      let feedbackLines = doc.splitTextToSize("Retroalimentación: " + feedbackText, 180);
-  
-      if (yPosition + questionLines.length * 7 + answerLines.length * 7 + feedbackLines.length * 7 > 270) {
-        doc.addPage();
-        yPosition = 10;
-      }
-  
-      doc.setFontSize(12);
-      doc.text(questionLines, 10, yPosition);
-      yPosition += questionLines.length * 7;
-      doc.text(answerLines, 10, yPosition);
-      yPosition += answerLines.length * 7;
-      doc.text(feedbackLines, 10, yPosition);
-      yPosition += feedbackLines.length * 7 + 5;
-    });
-  
-    doc.save("evidencia_quiz.pdf");
-  }
-  
 
 loadQuestions();
